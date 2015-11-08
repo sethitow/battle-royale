@@ -56,7 +56,7 @@ function submitPlayer() {
         if (snapshot.child(groupName).child("players").child(playerName).exists()) {
             throwError("That player already exists.");
         } else {
-            fb.child(groupName).child(playerName).child("players").set({
+            fb.child(groupName).child("players").child(playerName).set({
                 alive: true,
                 playing: true,
                 powerups: {
