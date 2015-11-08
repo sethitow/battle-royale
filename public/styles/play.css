@@ -9,7 +9,7 @@
   margin: auto;
 }
 
-#killButton {
+.play-button-secondary {
 	height: 40px;
 	width: 100px;
 	color: black;
@@ -17,4 +17,10 @@
 	text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	background: white;
 	box-shadow: 4px 4px 4px black;
+}
+
+#takePictureGlyph{
+
+font-size: 50px;
+
 }
