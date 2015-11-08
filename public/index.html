@@ -68,14 +68,19 @@
         }
     }
 
-    var map;
     var latitude;
     var longitude;
     function showPosition(position) {
+        try {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         alert(latitude);
         alert(longitude);
+        }
+        catch(error) {
+            alert("latitude and longitude functions failed");
+            alert(error.message);
+        }
         if ("vibrate" in navigator) {
             // vibration API supported, NOT IPHONE
             navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;

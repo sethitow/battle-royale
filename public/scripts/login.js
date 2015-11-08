@@ -116,16 +116,27 @@ function submitPlayer() {
             throwError("That name is already in use.");
         } else {
             storeGroup();
+            try {
             fb.child(groupName).child("players").child(playerName).set({
                 name: playerName,
                 alive: true,
                 lat: latitude,
                 log: longitude,
-
                 powerups: {
                     stalkerVision: false
                 }
             });
+        }
+        catch(error) {
+            fb.child(groupName).child("players").child(playerName).set({
+                name: playerName,
+                alive: true,
+                powerups: {
+                    stalkerVision: false
+                }
+            });
+
+        }
             $("#playerEntry").fadeOut(400);
             if (action == "create") {
                 $("#createStart").show();
