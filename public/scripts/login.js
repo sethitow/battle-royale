@@ -21,10 +21,11 @@ function submitGroup() {
         if (snapshot.child(groupName).exists()) {
             throwError("That room already exists.");
         } else {
+            alert("HAHAHA");
             fb.child(groupName).set({
                 password: groupPass,
                 playing: false,
-                startTime: getTime()
+                startTime: 10
             });
         }
     });
