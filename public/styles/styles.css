@@ -1,4 +1,4 @@
-body, h1 {
+body {
 	text-align: center;
 }
 
@@ -52,6 +52,26 @@ body, h1 {
 
 
 .playerThumbnail {
-height: 24px;
-width: 24px;
+  height: 24px;
+  width: 24px;
 }
+
+#loginBox {
+  position: relative;
+  background-color: white;
+  width: 50%;
+  padding: 1%;
+  display: flex;
+  margin: auto;
+}
+
+.button-secondary {
+            height: 50px;
+            width: 50px;
+            color: black;
+            border-radius: 5px;
+            text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            background: white;
+            box-shadow: 4px 4px 4px black;
+        }
+
