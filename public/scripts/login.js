@@ -18,7 +18,7 @@ if (typeof(Storage) !== "undefined") {
 }
 
 function retrieveGroup() {
-    if (localStorage.getItem("playerName") !== null) {
+    if (localStorage.getItem("playerName") != null) {
         groupName = localStorage.getItem("groupName");
         groupPass = localStorage.getItem("groupPass");
         playerName = localStorage.getItem("playerName");
@@ -38,7 +38,7 @@ function retrieveGroup() {
             }
         });
 
-    }
+    } else {}
 }
 
 function throwError(message) {
@@ -170,7 +170,7 @@ $(document).ready(function () {
         $("#loginEntry").delay(410).fadeIn(400);
     });
     
-    $("#playerListBack").click(function () {
+    /*$("#playerListBack").click(function () {
         $("#playerList > ul").empty();
         action = "";
         groupName = "";
@@ -178,13 +178,16 @@ $(document).ready(function () {
         playerName = "";
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
-    });
+    });*/
 
     $("#quit").click(function () {
-        localStorage.setItem("groupName", "");
-        localStorage.setItem("groupPass", "");
-        localStorage.setItem("playerName", "");
-        localStorage.setItem("action", "");
+        localStorage.removeItem("groupName");
+        localStorage.removeItem("groupPass");
+        localStorage.removeItem("playerName");
+        localStorage.removeItem("action");
+        $("#playerList > ul").empty();
+        $("#playerList").fadeOut(400);
+        $("#actionEntry").delay(410).fadeIn(400);
     });
 
     retrieveGroup();
