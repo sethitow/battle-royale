@@ -135,6 +135,14 @@ function submitPlayer() {
 
 }
 
+function submitLocation (snapshot) {
+    fb.child(groupName).child("players").child(playerName).set({
+        lat: latitude,
+        log: longitude,
+    });
+}
+
+
 function loadMessages(snapshot) {
 
     var url = "http://whattoeatuw.com/identicon/index.php?name=" + snapshot.child("name").val();
@@ -180,6 +188,7 @@ $(document).ready(function () {
     $("#enter").click(function () {
         playerName = $("#name").val();
         submitPlayer();
+        submitLocation();
     });
 
     $("#loginBack").click(function () {

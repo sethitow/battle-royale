@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onLoad="getLocation()">
 
     <div class="fullscreen-bg">
         <video class="fullscreen-bg__video" autoplay loop poster="media/fog.jpg" id="bgvid">
@@ -58,6 +58,45 @@
         var fb = new Firebase("https://assassin11715.firebaseio.com");
     </script>
     <script type="text/javascript" src="scripts/login.js"></script>
+
+    <script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+           alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    var map;
+    var latitude;
+    var longitude;
+    function showPosition(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        alert(latitude);
+        alert(longitude);
+        if ("vibrate" in navigator) {
+            // vibration API supported, NOT IPHONE
+            navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+            navigator.vibrate(1000);
+        }
+        else {
+
+        }
+        
+    }
+
+function submitLocation (snapshot) {
+    fb.child(groupName).child("players").child(playerName).set({
+        lat: latitude,
+        log: longitude,
+    });
+}
+
+
+</script>
+
 
 </body>
 
