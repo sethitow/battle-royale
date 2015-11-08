@@ -3,6 +3,45 @@ var groupName = "";
 var groupPass = "";
 var playerName = "";
 
+function storeGroup() {
+// Check browser support
+
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("groupName", groupName);
+    localStorage.setItem("groupPass", groupPass);
+    localStorage.setItem("playerName", playerName);
+    localStorage.setItem("action", action);
+} else {
+    alert("No storage detected!")
+    }
+}
+
+function retrieveGroup() {
+    if (localStorage.getItem("playerName") !== null) {
+        groupName = localStorage.getItem("groupName");
+        groupPass = localStorage.getItem("groupPass");
+        playerName = localStorage.getItem("playerName");
+        action = localStorage.getItem("action");
+        alert(action);
+        $("#actionEntry").fadeOut(1);
+        $("#playerList").fadeIn(0);
+        fb.once("value", function (snapshot) {
+            if(snapshot.child(groupName).child("playing").val() == false) {
+                fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
+                    loadMessages(snapshot);
+                    if(action == "create") {
+                        $("#createStart").show();
+                    } else if(action == "join") {
+                        $("#joinStart").show();
+                    }
+                });
+            }
+        });
+
+    }
+}
+
 function throwError(message) {
     alert(message);
 }
@@ -28,6 +67,7 @@ function submitGroup() {
                     playing: false,
                     startTime: now
                 });
+                storeGroup();
                 fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                     loadMessages(snapshot);
                 });
@@ -41,6 +81,7 @@ function submitGroup() {
                 if (snapshot.child(groupName).child("password").val() == groupPass) {
                     $("#loginEntry").fadeOut(400);
                     $("#playerEntry").delay(410).fadeIn(400);
+                    storeGroup();
                     fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                         loadMessages(snapshot);
                     });
@@ -140,4 +181,6 @@ $(document).ready(function () {
         $("#actionEntry").delay(410).fadeIn(400);
     });
 
+
+    retrieveGroup();
 });
