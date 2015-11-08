@@ -132,6 +132,10 @@ $(document).ready(function () {
     
     $("#playerListBack").click(function () {
         $("#playerList > ul").empty();
+        action = "";
+        groupName = "";
+        groupPass = "";
+        playerName = "";
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
     });
