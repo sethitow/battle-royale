@@ -1,0 +1,20 @@
+#playBox {
+  position: relative;
+  background-color: white;
+  width: 80%;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#killButton {
+	height: 40px;
+	width: 100px;
+	color: black;
+	border-radius: 5px;
+	text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	background: white;
+	box-shadow: 4px 4px 4px black;
+}
