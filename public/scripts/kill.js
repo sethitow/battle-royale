@@ -17,6 +17,66 @@ function getParam(name) {
 	
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
+    results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+
+$('#lp')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var parentAssassin = {
+    constructor: function fn0(value){
+        this._name = value;
+    }
+    get: function fn(){
+        return this._name;
+    },
+     ;
+    killer = null;
+};
+
+var childAssassin = Object.create(parentAssassin);
+childAssassin.constructor(fb.child(GROUP_ID))
