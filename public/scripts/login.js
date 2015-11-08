@@ -209,11 +209,12 @@ $(document).ready(function () {
         fb.child(groupName).child("players").child(playerName).remove();
         fb.child(groupName).child("players").off("child_added");
         
-        /*playerName = "";
-        groupName = "";
-        groupPass = "";
-        action = "";
-        */    
+        fb.once("value", function(snapshot) {
+            if(!snapshot.child(groupName).child("players").exists()) {
+                fb.child(groupName).remove();
+            }
+        });
+        
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
