@@ -74,6 +74,13 @@ body {
             box-shadow: 4px 4px 4px black;
         }
         
-.intput-text-secondary {
+.input-text-secondary {
 height: 20px;
+}
+
+ul
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
 }
