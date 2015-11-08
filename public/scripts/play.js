@@ -42,7 +42,7 @@ formData.append("file", blob);
 
 $.ajax({
             type: "POST",
-            url: "http://api.qrserver.com/v1/read-qr-code/",
+            url: "http://whattoeatuw.com/relay.php",
             enctype: 'multipart/form-data',
             data: formData,
             processData: false, // Don't process the files
