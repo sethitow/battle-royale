@@ -6,9 +6,9 @@
 
 function processKill(killer, killee){
 
-fb.child(groupName).child("players").child(killee).child(alive).set("false"); // change status of killee
+fb.child(groupName).child("players").child(killee).child("alive").set("false"); // change status of killee
 var killeeTarget = fb.child(groupName).child("players").child(killee).child(target); // get target of killee
-fb.child(groupName).child("players").child(killee).child(killlee).set(killeeTarget); // update target of killer
+fb.child(groupName).child("players").child(killer).child(target).set(killeeTarget); // update target of killer
 
 }
 
@@ -17,4 +17,6 @@ $('#Start').click(function(){
     var target = player.child("target").val();
     var x = 'http://api.qrserver.com/v1/create-qr-code/?data=[' + player + ']&size=[150]x[150]'; //generates unique QR code based on name
     document.getElementById("QR").src = x; //updates blank image tag in html to display unique QR code generated above
+    
+    
 });
