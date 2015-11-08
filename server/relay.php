@@ -1,12 +1,15 @@
 <?php
 
 header('Access-Control-Allow-Origin: *');
-$entityBody = file_get_contents('php://input');
-$relayPost = new HttpRequest('https://api.qrserver.com/v1/read-qr-code/', HttpRequest::METH_POST);
-$relayPost->addPostFile('image', $entityBody, 'image/jpeg');
+$postData = file_get_contents('php://input');
 
-try {
-    echo $relayPost->send()->getBody();
-} catch (HttpException $ex) {
-    echo $ex;
-}
+$url = 'http://api.qrserver.com/v1/read-qr-code/';
+$ch = curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+echo $response;
+curl_close($ch);
