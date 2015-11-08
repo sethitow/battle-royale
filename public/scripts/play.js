@@ -22,6 +22,16 @@ $('#Start').click(function(){
     
 });
 
+$('#picture').change(function(){
+//var picture = $('#picture')
+//console.log(picture);
+
+$.post("http://api.qrserver.com/v1/read-qr-code/", {file: $('#picture')}, function(result){
+        console.log(result);
+    });
+
+});
+
 $(document).ready(function () {
 
 	$("#killSuccessfull").fadeOut(0);
@@ -29,13 +39,5 @@ $(document).ready(function () {
 
 })
 
-$("#killButton").click(function () {
-    $("#normalPlayMode").fadeOut(400);
-    $("#killMode").delay(410).fadeIn(400);
-});
-    
-$("#backToPlayButton").click(function () {
-    $("#killMode").fadeOut(400);
-    $("#normalPlayMode").delay(410).fadeIn(400);
-});
+
 
