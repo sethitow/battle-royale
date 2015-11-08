@@ -7,4 +7,5 @@ $('#Run').click(function getQR(){
     document.getElementById("results").src = x;
     $http.get(x).then(function (response) {
     });
+$('#picture')
 });

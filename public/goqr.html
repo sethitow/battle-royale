@@ -7,7 +7,7 @@
 	
 	<!-- CSS/Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	
+	<link rel="stylesheet" href="styles/styles .css">
 	<!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	
@@ -16,9 +16,12 @@
 </head>
 <body>
     <input id='Content'></input>
-    <button id='Run'>Run</button>
-    <input type="file" class="filesyle" accept="capture=camera" data-buttonText="Take a picture"> 
+    <label for="Run"><span class="glyphicon glyphicon-qrcode"></span></label>
+    <button id='Run' style="opacity: 0;">Run</button>
+    <label for="picture"><span class="glyphicon glyphicon-camera"></label>
+    <input id="picture" type="file" accept="capture=camera" style="opacity: 0;"/>
     <p><img src="" id='results'></img></p>
+    <script src="scripts/bootstrap-filestyle.min.js"></script>
     <script type="text/javascript" src="scripts/goqr.js"></script>
 </body>
 </html>
