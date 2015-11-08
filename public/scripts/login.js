@@ -13,62 +13,85 @@ function openLoginEntry() {
 }
 
 function submitGroup() {
-    
-    alert(groupName);
-    
-    fb.once("value", function(snapshot) {
-        alert(snapshot);
-        if (snapshot.child(groupName).exists()) {
-            throwError("That room already exists.");
-        } else {
-            alert("HAHAHA");
-            fb.child(groupName).set({
-                password: groupPass,
-                playing: false,
-                startTime: 10
-            });
+
+    fb.once("value", function (snapshot) {
+
+        if (action == "create") {
+
+            if (snapshot.child(groupName).exists()) {
+                throwError("That room already exists.");
+            } else {
+                var now = new Date().getTime() / 1000;
+                fb.child(groupName).set({
+                    password: groupPass,
+                    playing: false,
+                    startTime: now
+                });
+                $("#loginEntry").fadeOut(400);
+                $("#playerEntry").delay(400).fadeIn(400);
+            }
+
+        } else if (action == "join") {
+
+            if (snapshot.child(groupName).exists()) {
+                if (snapshot.child(groupName).child("password") == groupPass) {
+                    $("#loginEntry").fadeOut(400);
+                    $("#playerEntry").delay(400).fadeIn(400);
+                } else {
+                    throwError("Incorrect password.");
+                }
+            } else {
+                throwError("That room doesn't exist.");
+            }
+
         }
+
+
     });
-    
-    $("#loginEntry").fadeOut(400);
-    $("#playerEntry").delay(400).fadeIn(400);
+
 }
 
 function submitPlayer() {
-    
-    fb.once("value", function(snapshot) {
-        if (snapshot.child(groupName).child(playerName).exists()) {
+
+    fb.once("value", function (snapshot) {
+        if (snapshot.child(groupName).child("players").child(playerName).exists()) {
             throwError("That player already exists.");
         } else {
-            fb.child(groupName).child(playerName).set({
-                password: groupPass
+            fb.child(groupName).child(playerName).child("players").set({
+                alive: true,
+                powerups: {
+                    stalkerVision: false
+                }
             });
         }
     });
+
 }
 
-$(document).ready(function() {
-    
+$(document).ready(function () {
+
     $("#loginEntry").fadeOut(0);
     $("#playerEntry").fadeOut(0);
 
-    $("#create").click(function() {
+    $("#create").click(function () {
         action = "create";
+        $("#submit").html("Create");
         openLoginEntry();
     });
-    
-    $("#join").click(function() {
+
+    $("#join").click(function () {
         action = "join";
+        $("#submit").html("Join");
         openLoginEntry();
     });
-    
-    $("#submit").click(function() {
+
+    $("#submit").click(function () {
         groupName = $("#gName").val();
         groupPass = $("#gPassword").val();
         submitGroup();
     });
-    
-    $("#enter").click(function() {
+
+    $("#enter").click(function () {
         playerName = $("#name").val();
         submitPlayer();
     });
