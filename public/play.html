@@ -6,8 +6,11 @@
    
     <title>Login to Battle Royale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link rel="stylesheet" type="text/css" href="styles/play.css" />
+    <!-- Script libraries -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -27,23 +30,24 @@
 
     <h1 id="title">Battle Royale</h1>
     <div id="playBox">
+    
     	<div id="normalPlayMode">
     	<div><button id="Start">Test Start</button></div>
     		<h3 id="targetName">Your Target: Bob Smith</h3>
-    		<img id="QR" src="media/qr-code-sample.png" style="height=150px;width=150px;">
-    		<div><button id="killButton">Tap to Kill</button></div>
+    		<img id="QR" src="media/qr-code-sample.png" style="height=100px;width=100px;">
+    		<div>
+    			<label id="takePictureGlyph" for="picture">
+    			<span class="glyphicon glyphicon-camera"></label>
+   				<input id="picture" type="file" accept="capture=camera" style="opacity: 0;"/>
+   			</div>
     	</div>
     	
-    	<div id="killMode">
+    	<div id="killSuccessfull">
+    		<span class="glyphicon glyphicon-ok" style="font-size: 70px">
+    	</div>
     	
-    	<input id='Content'></input>
-    <label for="Run"><span class="glyphicon glyphicon-qrcode"></span></label>
-    <button id='Run' style="opacity: 0;">Run</button>
-    <label for="picture"><span class="glyphicon glyphicon-camera"></label>
-    <input id="picture" type="file" accept="capture=camera" style="opacity: 0;"/>
-    <p><img src="" id='results'></img></p>
-
-    	
+    	<div id="killFailure">
+    		<span class="glyphicon glyphicon-remove" style="font-size: 70px">
     	</div>
 
         

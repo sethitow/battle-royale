@@ -24,16 +24,18 @@ $('#Start').click(function(){
 
 $(document).ready(function () {
 
-$("#killMode").fadeOut(0);
+	$("#killSuccessfull").fadeOut(0);
+	$("#killFailure").fadeOut(0);
 
 })
 
 $("#killButton").click(function () {
     $("#normalPlayMode").fadeOut(400);
     $("#killMode").delay(410).fadeIn(400);
-    });
-
-function openNormalPlayMode() {
+});
+    
+$("#backToPlayButton").click(function () {
     $("#killMode").fadeOut(400);
     $("#normalPlayMode").delay(410).fadeIn(400);
-}
+});
+
