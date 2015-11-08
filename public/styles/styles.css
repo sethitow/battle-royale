@@ -3,6 +3,7 @@ body {
 }
 
 .fullscreen-bg {
+  background: url('../media/fog.jpg');
   position: fixed;
   top: 0;
   right: 0;
@@ -74,14 +75,5 @@ body {
         }
         
 .intput-text-secondary {
-
 height: 20px;
-
-}
-
-ul
-{
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
 }
