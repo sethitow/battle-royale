@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='http://use.edgefonts.net/butcherman.js'></script>
 
 </head>
 
@@ -20,20 +21,28 @@
 
 
     <div id="loginBox">
-        <h1>Ass<sup>2</sup>in</h1>
+        <h1 id="title">Battle Royale</h1>
         <div id="actionEntry">
             <button id="create">Create Lobby</button>
             <button id="join">Join Lobby</button>
         </div>
         <div id="loginEntry">
+            <button id="loginBack">Go Back</button>
             <input type="text" id="gName" size="20" maxlength="50" placeholder="Group Name"></input>
             <input type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
-            <button id="submit" onClick="">Join</button>
+            <button id="submit">Join</button>
         </div>
         <div id="playerEntry">
+            <button id="playerBack">Go Back</button>
             <input type="text" id="name" size="20" maxlength="50" placeholder="Name"></input>
-            <button id="create" onClick="">Add Photo</button>
-            <button id="enter" onClick="">Enter</button>
+            <button id="create">Add Photo</button>
+            <button id="enter">Enter</button>
+        </div>
+        <div id="playerList">
+            <ul>
+            </ul>
+            <button id="createStart">Start</button>
+            <h4 id="joinStart">Waiting for host to start...</h4>
         </div>
         
     </div>

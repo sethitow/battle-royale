@@ -34,7 +34,7 @@ function submitGroup() {
         } else if (action == "join") {
 
             if (snapshot.child(groupName).exists()) {
-                if (snapshot.child(groupName).child("password") == groupPass) {
+                if (snapshot.child(groupName).child("password").val() == groupPass) {
                     $("#loginEntry").fadeOut(400);
                     $("#playerEntry").delay(400).fadeIn(400);
                 } else {
@@ -46,7 +46,6 @@ function submitGroup() {
 
         }
 
-
     });
 
 }
@@ -55,14 +54,22 @@ function submitPlayer() {
 
     fb.once("value", function (snapshot) {
         if (snapshot.child(groupName).child("players").child(playerName).exists()) {
-            throwError("That player already exists.");
+            throwError("That name is already in use.");
         } else {
-            fb.child(groupName).child(playerName).child("players").set({
+            fb.child(groupName).child("players").child(playerName).set({
                 alive: true,
+                playing: true,
                 powerups: {
                     stalkerVision: false
                 }
             });
+            $("#playerEntry").fadeOut(400);
+            if(action == "create") {
+                $("#createStart").show();
+            } else if(action == "join") {
+                $("#joinStart").show();
+            }
+            $("#playerList").delay(400).fadeIn(400);
         }
     });
 
@@ -72,6 +79,9 @@ $(document).ready(function () {
 
     $("#loginEntry").fadeOut(0);
     $("#playerEntry").fadeOut(0);
+    $("#createStart").hide();
+    $("#joinStart").hide();
+    $("#playerList").fadeOut(0);
 
     $("#create").click(function () {
         action = "create";
@@ -94,6 +104,16 @@ $(document).ready(function () {
     $("#enter").click(function () {
         playerName = $("#name").val();
         submitPlayer();
+    });
+    
+    $("#loginBack").click(function () {
+        $("#loginEntry").fadeOut(400);
+        $("#actionEntry").delay(400).fadeIn(400);
+    });
+    
+    $("#playerBack").click(function () {
+        $("#playerEntry").fadeOut(400);
+        $("#loginEntry").delay(400).fadeIn(400);
     });
 
 });
