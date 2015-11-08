@@ -35,6 +35,9 @@ function retrieveGroup() {
                         $("#joinStart").show();
                     }
                 });
+                fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
+                    $("#playerList > ul").remove("#PLAYER_" + oldSnapshot.child("name"));
+                });
             }
         });
 
@@ -129,10 +132,10 @@ function loadMessages (snapshot) {
         method: "GET",
         url: url,
         success: function (imgData) {
-            $("#playerList > ul").append('<li><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
         },
         error: function () {
-            $("#playerList > ul").append('<li><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'><h3>'+snapshot.child("name").val()+'</h3></li>');
         },
     });
     
@@ -195,6 +198,9 @@ $(document).ready(function () {
         localStorage.removeItem("groupPass");
         localStorage.removeItem("playerName");
         localStorage.removeItem("action");
+        
+        fb.child(groupName).child("players").child(playerName).remove();
+        
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
