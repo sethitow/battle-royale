@@ -43,3 +43,9 @@ body, h1 {
     display: none;
   }
 }
+
+#title {
+	font-size: 100px;
+	font-family: "butcherman", Helvetica, sans-serif;
+	color: #c0392b;
+}
