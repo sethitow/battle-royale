@@ -36,9 +36,12 @@
     		<h3 id="targetName">Your Target: Bob Smith</h3>
     		<img id="QR" src="media/qr-code-sample.png" style="height=100px;width=100px;">
     		<div>
-    			<label id="takePictureGlyph" for="picture">
-    			<span class="glyphicon glyphicon-camera"></label>
-   				<input id="picture" type="file" accept="capture=camera" style="opacity: 0;"/>
+    			<form enctype="multipart/form-data" action="https://api.qrserver.com/v1/read-qr-code/" method="POST">
+					<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+    				<label id="takePictureGlyph" for="picture">
+    				<span class="glyphicon glyphicon-camera"></label>
+   					<input id="picture" name="file" type="file" accept="capture=camera" style="opacity: 0;"/>
+				</form>
    			</div>
     	</div>
     	

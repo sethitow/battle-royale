@@ -23,14 +23,45 @@ $('#Start').click(function(){
 });
 
 $('#picture').change(function(){
-//var picture = $('#picture')
-//console.log(picture);
+var input = document.getElementById('picture');
 
-$.post("http://api.qrserver.com/v1/read-qr-code/", {file: $('#picture')}, function(result){
-        console.log(result);
-    });
+console.log(input);
+
+file = input.files[0];
+fr = new FileReader();
+fr.onload = function postStuff(){
+picture = fr.result;
+
+console.log(picture);
+
+var formData = new FormData();
+
+var blob = new Blob([picture], { type: "image/jpeg"});
+
+formData.append("file", blob);
+
+$.ajax({
+            type: "POST",
+            url: "https://api.qrserver.com/v1/read-qr-code/",
+            enctype: 'multipart/form-data',
+            data: formData,
+            processData: false, // Don't process the files
+        	contentType: false, //
+            success: function (data) {
+               console.log(data);
+            }
+        });
+
+}
+
+
+//fr.readAsText(file);
+//fr.readAsDataURL(file);
+fr.readAsBinaryString(file);
 
 });
+
+
 
 $(document).ready(function () {
 
