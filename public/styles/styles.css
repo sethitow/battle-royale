@@ -34,7 +34,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media(max-width: 767px) {
   .fullscreen-bg {
     background: url('/media/fog.jpg') center center / cover no-repeat;
   }
@@ -45,7 +45,7 @@ body {
 }
 
 #title {
-	font-size: 100px;
+	font-size: 70px;
 	font-family: "butcherman", Helvetica, sans-serif;
 	color: #c0392b;
 }
@@ -59,19 +59,26 @@ body {
 #loginBox {
   position: relative;
   background-color: white;
-  width: 50%;
+  width: 80%;
   padding: 1%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
 .button-secondary {
-            height: 50px;
-            width: 50px;
+            height: 40px;
+            width: 100px;
             color: black;
             border-radius: 5px;
             text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
             background: white;
             box-shadow: 4px 4px 4px black;
         }
+        
+.intput-text-secondary {
 
+height: 20px;
+
+}

@@ -1,9 +1,11 @@
 <!doctype html>
+
 <html>
 
 <head>
    
     <title>Login to Battle Royale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -12,12 +14,14 @@
 </head>
 
 <body>
-    <div class="fullscreen-bg">
-        <video class="fullscreen-bg__video" autoplay loop poster="media/fog.jpg" id="bgvid">
-          <!--<source src="media/fog.webm" type="video/webm">
-            <source src="media/fog.mp4" type="video/mp4">-->
+
+   <div class="fullscreen-bg">
+        <video class="fullscreen-bg__video" autoplay loop poster="media/fog.jpg" id="bgvid"> 
+        <source src="media/fog.webm" type="video/webm">
+            <source src="media/fog.mp4" type="video/mp4">
         </video>
     </div>
+
 
     <h1 id="title">Battle Royale</h1>
     <div id="loginBox">
@@ -28,8 +32,8 @@
         </div>
         <div id="loginEntry">
             <button class="button-secondary" id="loginBack">Go Back</button>
-            <input type="text" id="gName" size="20" maxlength="50" placeholder="Group Name"></input>
-            <input type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
+            <input class="intput-text-secondary" type="text" id="gName" size="20" maxlength="50" placeholder="Group Name"></input>
+            <input class="intput-text-secondary"  type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
             <button class="button-secondary" id="submit">Join</button>
         </div>
         <div id="playerEntry">
