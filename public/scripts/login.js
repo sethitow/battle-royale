@@ -34,7 +34,7 @@ function submitGroup() {
         } else if (action == "join") {
 
             if (snapshot.child(groupName).exists()) {
-                if (snapshot.child(groupName).child("password") == groupPass) {
+                if (snapshot.child(groupName).child("password").val() == groupPass) {
                     $("#loginEntry").fadeOut(400);
                     $("#playerEntry").delay(400).fadeIn(400);
                 } else {
@@ -45,7 +45,6 @@ function submitGroup() {
             }
 
         }
-
 
     });
 
@@ -59,6 +58,7 @@ function submitPlayer() {
         } else {
             fb.child(groupName).child(playerName).child("players").set({
                 alive: true,
+                playing: true,
                 powerups: {
                     stalkerVision: false
                 }
