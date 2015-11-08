@@ -1,3 +1,13 @@
+body {
+    text-align: center;
+}
+#title {
+    font-size: 70px;
+    font-family: "Raleway", sans-serif;
+    color: white;
+    text-shadow: 0 0.5vh 2vh hsl(0, 0%, 20%);
+}
+
 #playBox {
   position: relative;
   background-color: white;
@@ -10,13 +20,16 @@
 }
 
 .play-button-secondary {
-	height: 40px;
-	width: 100px;
-	color: black;
-	border-radius: 5px;
-	text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	background: white;
-	box-shadow: 4px 4px 4px black;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    height: 40px;
+    width: 100px;
+    max-width: 40vh;
+    margin: 4vh;
+    color: black;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0.5vh 2vh hsl(0, 0%, 20%);
 }
 
 #takePictureGlyph{
