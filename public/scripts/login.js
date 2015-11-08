@@ -4,16 +4,22 @@ var groupPass = "";
 var playerName = "";
 
 function storeGroup() {
-// Check browser support
+    // Check browser support
 
-if (typeof(Storage) !== "undefined") {
-    // Store
-    localStorage.setItem("groupName", groupName);
-    localStorage.setItem("groupPass", groupPass);
-    localStorage.setItem("playerName", playerName);
-    localStorage.setItem("action", action);
-} else {
-    alert("No storage detected!")
+    if (typeof (Storage) !== "undefined") {
+        localStorage.setItem("groupName", groupName);
+        localStorage.setItem("groupPass", groupPass);
+        localStorage.setItem("action", action);
+    } else {
+        alert("No storage detected!")
+    }
+}
+
+function storePlayer() {
+    if (typeof (Storage) !== "undefined") {
+        localStorage.setItem("playerName", playerName);
+    } else {
+        alert("No storage detected!")
     }
 }
 
@@ -26,12 +32,12 @@ function retrieveGroup() {
         $("#actionEntry").fadeOut(1);
         $("#playerList").fadeIn(0);
         fb.once("value", function (snapshot) {
-            if(snapshot.child(groupName).child("playing").val() == false) {
+            if (snapshot.child(groupName).child("playing").val() == false) {
                 fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                     loadMessages(snapshot);
-                    if(action == "create") {
+                    if (action == "create") {
                         $("#createStart").show();
-                    } else if(action == "join") {
+                    } else if (action == "join") {
                         $("#joinStart").show();
                     }
                 });
@@ -112,6 +118,7 @@ function submitPlayer() {
         if (snapshot.child(groupName).child("players").child(playerName).exists()) {
             throwError("That name is already in use.");
         } else {
+            storePlayer();
             fb.child(groupName).child("players").child(playerName).set({
                 name: playerName,
                 alive: true,
@@ -120,9 +127,9 @@ function submitPlayer() {
                 }
             });
             $("#playerEntry").fadeOut(400);
-            if(action == "create") {
+            if (action == "create") {
                 $("#createStart").show();
-            } else if(action == "join") {
+            } else if (action == "join") {
                 $("#joinStart").show();
             }
             $("#playerList").delay(410).fadeIn(400);
@@ -131,20 +138,20 @@ function submitPlayer() {
 
 }
 
-function loadMessages (snapshot) {
+function loadMessages(snapshot) {
 
     var url = "http://whattoeatuw.com/identicon/index.php?name=" + snapshot.child("name").val();
     $.ajax({
         method: "GET",
         url: url,
         success: function (imgData) {
-            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'"><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_' + snapshot.child("name").val() + '"><img src="' + imgData + '" class="playerThumbnail" /><h3>' + snapshot.child("name").val() + '</h3></li>');
         },
         error: function () {
-            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'"><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_' + snapshot.child("name").val() + '"><h3>' + snapshot.child("name").val() + '</h3></li>');
         },
     });
-    
+
 }
 
 $(document).ready(function () {
@@ -177,17 +184,17 @@ $(document).ready(function () {
         playerName = $("#name").val();
         submitPlayer();
     });
-    
+
     $("#loginBack").click(function () {
         $("#loginEntry").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
     });
-    
+
     $("#playerBack").click(function () {
         $("#playerEntry").fadeOut(400);
         $("#loginEntry").delay(410).fadeIn(400);
     });
-    
+
     /*$("#playerListBack").click(function () {
         $("#playerList > ul").empty();
         action = "";
@@ -199,25 +206,25 @@ $(document).ready(function () {
     });*/
 
     $("#quit").click(function () {
-        
+
         localStorage.removeItem("groupName");
         localStorage.removeItem("groupPass");
         localStorage.removeItem("playerName");
         localStorage.removeItem("action");
-        
+
         fb.child(groupName).child("players").child(playerName).remove();
         fb.child(groupName).child("players").off("child_added");
-        
-        fb.once("value", function(snapshot) {
-            if(!snapshot.child(groupName).child("players").exists()) {
+
+        fb.once("value", function (snapshot) {
+            if (!snapshot.child(groupName).child("players").exists()) {
                 fb.child(groupName).remove();
             }
         });
-        
+
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
-        
+
     });
 
     retrieveGroup();
