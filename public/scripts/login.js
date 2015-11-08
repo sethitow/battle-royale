@@ -9,18 +9,15 @@ function storeGroup() {
     if (typeof (Storage) !== "undefined") {
         localStorage.setItem("groupName", groupName);
         localStorage.setItem("groupPass", groupPass);
+        localStorage.setItem("playerName", playerName);
         localStorage.setItem("action", action);
     } else {
         alert("No storage detected!")
     }
 }
 
-function storePlayer() {
-    if (typeof (Storage) !== "undefined") {
-        localStorage.setItem("playerName", playerName);
-    } else {
-        alert("No storage detected!")
-    }
+function startGame() {
+
 }
 
 function retrieveGroup() {
@@ -118,7 +115,7 @@ function submitPlayer() {
         if (snapshot.child(groupName).child("players").child(playerName).exists()) {
             throwError("That name is already in use.");
         } else {
-            storePlayer();
+            storeGroup();
             fb.child(groupName).child("players").child(playerName).set({
                 name: playerName,
                 alive: true,
@@ -193,6 +190,24 @@ $(document).ready(function () {
     $("#playerBack").click(function () {
         $("#playerEntry").fadeOut(400);
         $("#loginEntry").delay(410).fadeIn(400);
+    });
+
+    $("#createStart").click(function () {
+        fb.child(groupName).child("players").once("value", function (snapshot) {
+            var randomOrder = [];
+            snapshot.forEach(function(childSnapshot) {
+                if(Math.random() > 0.5) {
+                    randomOrder.unshift(childSnapshot.child("name").val());
+                } else {
+                    randomOrder.push(childSnapshot.child("name").val());
+                }
+            });
+            console.log(randomOrder);
+            for(var i = 0; i < randomOrder.length - 1; i++) {
+                fb.child(groupName).child("players").child(randomOrder[i]).child("target").set(randomOrder[i+1]);
+            }
+            fb.child(groupName).child("players").child(randomOrder[randomOrder.length-1]).child("target").set(randomOrder[0]);
+        });
     });
 
     /*$("#playerListBack").click(function () {
