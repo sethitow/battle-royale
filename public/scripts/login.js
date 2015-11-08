@@ -23,6 +23,7 @@ function submitGroup() {
             } else {
                 var now = new Date().getTime() / 1000;
                 fb.child(groupName).set({
+                    name: groupName,
                     password: groupPass,
                     playing: false,
                     startTime: now
@@ -57,6 +58,7 @@ function submitPlayer() {
             throwError("That name is already in use.");
         } else {
             fb.child(groupName).child("players").child(playerName).set({
+                name: playerName,
                 alive: true,
                 playing: true,
                 powerups: {
@@ -73,6 +75,12 @@ function submitPlayer() {
         }
     });
 
+}
+
+function loadMessages (snapshot) {
+    
+    $("#playerList > ul").append('<li><img src="'+snapshot.child("picture").val()+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
+    
 }
 
 $(document).ready(function () {
@@ -114,6 +122,10 @@ $(document).ready(function () {
     $("#playerBack").click(function () {
         $("#playerEntry").fadeOut(400);
         $("#loginEntry").delay(400).fadeIn(400);
+    });
+    
+    fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
+        loadMessages(snapshot);
     });
 
 });
