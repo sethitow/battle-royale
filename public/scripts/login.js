@@ -119,6 +119,9 @@ function submitPlayer() {
             fb.child(groupName).child("players").child(playerName).set({
                 name: playerName,
                 alive: true,
+                lat: latitude,
+                log: longitude,
+
                 powerups: {
                     stalkerVision: false
                 }
@@ -134,14 +137,6 @@ function submitPlayer() {
     });
 
 }
-
-function submitLocation (snapshot) {
-    fb.child(groupName).child("players").child(playerName).set({
-        lat: latitude,
-        log: longitude,
-    });
-}
-
 
 function loadMessages(snapshot) {
 
@@ -188,7 +183,6 @@ $(document).ready(function () {
     $("#enter").click(function () {
         playerName = $("#name").val();
         submitPlayer();
-        submitLocation();
     });
 
     $("#loginBack").click(function () {
