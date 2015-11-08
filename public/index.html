@@ -24,13 +24,15 @@
         </div>
         <div id="playerEntry">
             <input type="text" id="name" size="20" maxlength="50" placeholder="Name"></input>
-            <input type="password" id="password" size="20" maxlength="50" placeholder="Password"></input>
             <button id="create" onClick="">Add Photo</button>
             <button id="enter" onClick="">Enter</button>
         </div>
         
     </div>
     
+    <script>
+        var fb = new Firebase("https://assassin11715.firebaseio.com");
+    </script>
     <script type="text/javascript" src="scripts/login.js"></script>
     
 </body>
