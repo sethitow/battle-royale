@@ -1,20 +1,35 @@
-var action = "";
+function openLoginEntry() {
+    
+}
 
-function openLogin(currentAction) {
-    action = currentAction;
-    $("#loginBox").slideDown();
+function openPlayerEntry() {
+    
 }
 
 $(document).ready(function() {
-    
-    $("#loginBox").slideUp(0);
 
     $("#create").click(function() {
-        openLogin("create");
+        openLoginEntry();
     });
     
     $("#join").click(function() {
-        openLogin("join");
+        openLoginEntry();
+    });
+    
+    $("#gName").click(function() {
+        
+    });
+    
+    $("#gPassword").click(function() {
+        
+    });
+    
+    $("#name").click(function() {
+        
+    });
+    
+    $("#password").click(function() {
+        
     });
 
-}
+});
