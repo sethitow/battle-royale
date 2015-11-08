@@ -54,7 +54,7 @@ function submitPlayer() {
 
     fb.once("value", function (snapshot) {
         if (snapshot.child(groupName).child("players").child(playerName).exists()) {
-            throwError("That player already exists.");
+            throwError("That name is already in use.");
         } else {
             fb.child(groupName).child("players").child(playerName).set({
                 alive: true,
@@ -63,6 +63,13 @@ function submitPlayer() {
                     stalkerVision: false
                 }
             });
+            $("#playerEntry").fadeOut(400);
+            if(action == "create") {
+                $("#createStart").show();
+            } else if(action == "join") {
+                $("#joinStart").show();
+            }
+            $("#playerList").delay(400).fadeIn(400);
         }
     });
 
@@ -72,6 +79,9 @@ $(document).ready(function () {
 
     $("#loginEntry").fadeOut(0);
     $("#playerEntry").fadeOut(0);
+    $("#createStart").hide();
+    $("#joinStart").hide();
+    $("#playerList").fadeOut(0);
 
     $("#create").click(function () {
         action = "create";
