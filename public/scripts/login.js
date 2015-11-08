@@ -132,10 +132,10 @@ function loadMessages (snapshot) {
         method: "GET",
         url: url,
         success: function (imgData) {
-            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'"><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
         },
         error: function () {
-            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'><h3>'+snapshot.child("name").val()+'</h3></li>');
+            $("#playerList > ul").append('<li id="PLAYER_'+snapshot.child("name").val()+'"><h3>'+snapshot.child("name").val()+'</h3></li>');
         },
     });
     
