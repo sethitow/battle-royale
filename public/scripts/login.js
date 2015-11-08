@@ -106,7 +106,6 @@ function submitPlayer() {
             fb.child(groupName).child("players").child(playerName).set({
                 name: playerName,
                 alive: true,
-                playing: true,
                 powerups: {
                     stalkerVision: false
                 }
@@ -124,9 +123,20 @@ function submitPlayer() {
 }
 
 function loadMessages (snapshot) {
+
+    var url = "http://aaronjohnston.me/identicon/index.php?name=" + snapshot.child("name").val();
+    $.ajax({
+        method: "GET",
+        url: url,
+        success: function (imgData) {
+            $("#playerList > ul").append('<li><img src="'+imgData+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
+        },
+        error: function () {
+            $("#playerList > ul").append('<li><h3>'+snapshot.child("name").val()+'</h3></li>');
+        },
+    });
     
-    $("#playerList > ul").append('<li><img src="'+snapshot.child("picture").val()+'" class="playerThumbnail" /><h3>'+snapshot.child("name").val()+'</h3></li>');
-    
+        
 }
 
 $(document).ready(function () {
@@ -188,6 +198,7 @@ $(document).ready(function () {
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
+        
     });
 
     retrieveGroup();
