@@ -1,8 +1,0 @@
-# Folders
-/app/vendors/
-/app/node_modules/
-
-# Files
-.DS_Store
-Thumbs.db
-npm-debug.log
