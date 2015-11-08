@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>To-Do</title>
+    <title>Qr</title>
 	
 	<!-- CSS/Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -15,7 +15,10 @@
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
 </head>
 <body>
-        <button id="Run">Run</button>
-        <script type="text/javascript" src="goqr.js"></script>
+    <input id='Content'></input>
+    <button id='Run'>Run</button>
+    <input type="file" accept="image/*;capture=camera"></input>    
+    <p><img src="" id='results'></img></p>
+    <script type="text/javascript" src="scripts/goqr.js"></script>
 </body>
 </html>
