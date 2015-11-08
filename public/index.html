@@ -3,9 +3,10 @@
 <html>
 
 <head>
-   
-    <title>Login to Battle Royale</title>
+
+    <title>Battle Royale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:800,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
@@ -16,48 +17,48 @@
 
 <body>
 
-   <div class="fullscreen-bg">
-        <video class="fullscreen-bg__video" autoplay loop poster="media/fog.jpg" id="bgvid"> 
-        <source src="media/fog.webm" type="video/webm">
-            <source src="media/fog.mp4" type="video/mp4">
+    <div class="fullscreen-bg">
+        <video class="fullscreen-bg__video" autoplay loop poster="media/fog.jpg" id="bgvid">
+            <source src="media/fog.webm" type="video/webm">
+                <source src="media/fog.mp4" type="video/mp4">
         </video>
     </div>
 
-
     <h1 id="title">Battle Royale</h1>
+
     <div id="loginBox">
-        
         <div id="actionEntry">
             <button class="button-secondary" id="create">Create Lobby</button>
             <button class="button-secondary" id="join">Join Lobby</button>
         </div>
         <div id="loginEntry">
-            <div id="loginBack" class="back-button"><i class="fa fa-arrow-left"></i></div>
+            <div id="loginBack" class="back-button"><i class="fa fa-arrow-left"></i>
+            </div>
             <input class="input-text-secondary" type="text" id="gName" size="20" maxlength="50" placeholder="Group Name"></input>
-            <input class="input-text-secondary"  type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
+            <input class="input-text-secondary" type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
             <button class="button-secondary" id="submit">Join</button>
         </div>
         <div id="playerEntry">
-            <div id="playerBack" class="back-button"><i class="fa fa-arrow-left"></i></div>
-            <input type="text" id="name" size="20" maxlength="50" placeholder="Name"></input>
-            <button class="button-secondary" id="create">Add Photo</button>
+            <div id="playerBack" class="back-button"><i class="fa fa-arrow-left"></i>
+            </div>
+            <input class="input-text-secondary" type="text" id="name" size="20" maxlength="50" placeholder="Name"></input>
             <button class="button-secondary" id="enter">Enter</button>
         </div>
         <div id="playerList">
-            <button class="button-secondary" id="quit">Quit Game</button>
-            <ul>
+            <ul id="playerListDisplay">
             </ul>
             <button class="button-secondary" id="createStart">Start</button>
             <h4 id="joinStart">Waiting for host to start...</h4>
+            <button class="button-small" id="quit">Quit Game</button>
         </div>
-        
+
     </div>
-    
+
     <script>
         var fb = new Firebase("https://assassin11715.firebaseio.com");
     </script>
     <script type="text/javascript" src="scripts/login.js"></script>
-    
+
 </body>
 
 </html>

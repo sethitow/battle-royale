@@ -1,85 +1,149 @@
 body {
-	text-align: center;
-}
-
-.fullscreen-bg {
-  background: url('../media/fog.jpg');
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
-}
-
-.fullscreen-bg__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-@media (min-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    height: 300%;
-    top: -100%;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .fullscreen-bg__video {
-    width: 300%;
-    left: -100%;
-  }
-}
-
-@media screen and (max-device-width : 500px) {
-  .fullscreen-bg__video {
-    display: none;
-  }
+    text-align: center;
 }
 
 #title {
-	font-size: 70px;
-	font-family: "butcherman", Helvetica, sans-serif;
-	color: #c0392b;
-}
-
-
-.playerThumbnail {
-  height: 24px;
-  width: 24px;
+    font-size: 8vh;
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0.5vw 2vw hsl(0, 100%, 40%);
 }
 
 #loginBox {
-  position: relative;
-  background-color: white;
-  width: 80%;
-  padding: 1%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+    position: relative;
+    background-color: white;
+    border-radius: 2vw;
+    width: 70vw;
+    min-height: 50vh;
+    padding: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    box-shadow: 0 1vw 1.2vw hsl(0, 100%, 40%);
+    transition: height 0.3s;
 }
 
 .button-secondary {
-            height: 40px;
-            width: 100px;
-            color: black;
-            border-radius: 5px;
-            text-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-            background: white;
-            box-shadow: 4px 4px 4px black;
-        }
-        
-.input-text-secondary {
-height: 20px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    height: 8vh;
+    width: 60vw;
+    margin: 4vw;
+    color: black;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0.5vw 2vw hsl(0, 0%, 20%);
 }
 
-ul{
+.button-small {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    height: 5vh;
+    width: 40vw;
+    margin: 1vw;
+    color: black;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0.5vw 2vw hsl(0, 0%, 20%);
+}
+
+.back-button {
+    font-size: 4vh;
+    color: hsl(0, 0%, 30%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5vw;
+}
+
+#playerListDisplay {
+    height: 40vh;
+    padding: 2vh;
+    box-shadow: inset 0.4vw 0.4vw 1vw hsl(0, 0%, 20%);
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+li {
+    height: 4vh;
+}
+
+li > img {
+    float: left;
+    height: 4vh;
+    width: 4vh;
+}
+
+li > h3 {
+    float: left;
+    line-height: 4vh;
+    margin: 0 5vw;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+}
+
+.playerThumbnail {
+    height: 24px;
+    width: 24px;
+}
+
+.input-text-secondary {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    height: 6vh;
+    width: 66vw;
+    margin: 3vw;
+    padding: 2vw;
+    color: black;
+    border-radius: 5px;
+    background: white;
+}
+
+ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+}
+
+.fullscreen-bg {
+    background: url('../media/fog.jpg');
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .fullscreen-bg__video {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .fullscreen-bg__video {
+        width: 300%;
+        left: -100%;
+    }
+}
+
+@media screen and (max-device-width: 500px) {
+    .fullscreen-bg__video {
+        display: none;
+    }
 }
