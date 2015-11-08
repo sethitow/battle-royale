@@ -36,6 +36,7 @@ function retrieveGroup() {
                     }
                 });
                 fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
+                    console.log(groupName);
                     $("#playerList > ul").remove("#PLAYER_" + oldSnapshot.child("name"));
                 });
             }
@@ -200,6 +201,11 @@ $(document).ready(function () {
         localStorage.removeItem("action");
         
         fb.child(groupName).child("players").child(playerName).remove();
+        
+        playerName = "";
+        groupName = "";
+        groupPass = "";
+        action = "";
         
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
