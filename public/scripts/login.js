@@ -36,13 +36,12 @@ function retrieveGroup() {
                     }
                 });
                 fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
-                    console.log(groupName);
-                    $("#playerList > ul").remove("#PLAYER_" + oldSnapshot.child("name"));
+                    $("#playerList > ul > #PLAYER_" + oldSnapshot.child("name").val()).remove();
                 });
             }
         });
 
-    } else {}
+    }
 }
 
 function throwError(message) {
@@ -74,6 +73,9 @@ function submitGroup() {
                 fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                     loadMessages(snapshot);
                 });
+                fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
+                    $("#playerList > ul > #PLAYER_" + oldSnapshot.child("name").val()).remove();
+                });
                 $("#loginEntry").fadeOut(400);
                 $("#playerEntry").delay(410).fadeIn(400);
             }
@@ -87,6 +89,9 @@ function submitGroup() {
                     storeGroup();
                     fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                         loadMessages(snapshot);
+                    });
+                    fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
+                        $("#playerList > ul > #PLAYER_" + oldSnapshot.child("name").val()).remove();
                     });
                 } else {
                     throwError("Incorrect password.");
@@ -195,18 +200,20 @@ $(document).ready(function () {
     });*/
 
     $("#quit").click(function () {
+        
         localStorage.removeItem("groupName");
         localStorage.removeItem("groupPass");
         localStorage.removeItem("playerName");
         localStorage.removeItem("action");
         
         fb.child(groupName).child("players").child(playerName).remove();
+        fb.child(groupName).child("players").off("child_added");
         
-        playerName = "";
+        /*playerName = "";
         groupName = "";
         groupPass = "";
         action = "";
-        
+        */    
         $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
