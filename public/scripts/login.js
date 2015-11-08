@@ -9,7 +9,7 @@ function throwError(message) {
 
 function openLoginEntry() {
     $("#actionEntry").fadeOut(400);
-    $("#loginEntry").delay(400).fadeIn(400);
+    $("#loginEntry").delay(410).fadeIn(400);
 }
 
 function submitGroup() {
@@ -32,7 +32,7 @@ function submitGroup() {
                     loadMessages(snapshot);
                 });
                 $("#loginEntry").fadeOut(400);
-                $("#playerEntry").delay(400).fadeIn(400);
+                $("#playerEntry").delay(410).fadeIn(400);
             }
 
         } else if (action == "join") {
@@ -40,7 +40,7 @@ function submitGroup() {
             if (snapshot.child(groupName).exists()) {
                 if (snapshot.child(groupName).child("password").val() == groupPass) {
                     $("#loginEntry").fadeOut(400);
-                    $("#playerEntry").delay(400).fadeIn(400);
+                    $("#playerEntry").delay(410).fadeIn(400);
                     fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                         loadMessages(snapshot);
                     });
@@ -77,7 +77,7 @@ function submitPlayer() {
             } else if(action == "join") {
                 $("#joinStart").show();
             }
-            $("#playerList").delay(400).fadeIn(400);
+            $("#playerList").delay(410).fadeIn(400);
         }
     });
 
@@ -122,12 +122,22 @@ $(document).ready(function () {
     
     $("#loginBack").click(function () {
         $("#loginEntry").fadeOut(400);
-        $("#actionEntry").delay(400).fadeIn(400);
+        $("#actionEntry").delay(410).fadeIn(400);
     });
     
     $("#playerBack").click(function () {
         $("#playerEntry").fadeOut(400);
-        $("#loginEntry").delay(400).fadeIn(400);
+        $("#loginEntry").delay(410).fadeIn(400);
+    });
+    
+    $("#playerListBack").click(function () {
+        $("#playerList > ul").empty();
+        action = "";
+        groupName = "";
+        groupPass = "";
+        playerName = "";
+        $("#playerList").fadeOut(400);
+        $("#actionEntry").delay(410).fadeIn(400);
     });
 
 });

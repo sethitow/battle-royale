@@ -34,11 +34,7 @@ body {
   }
 }
 
-@media(max-width: 767px) {
-  .fullscreen-bg {
-    background: url('/media/fog.jpg') center center / cover no-repeat;
-  }
-
+@media screen and (max-device-width : 500px) {
   .fullscreen-bg__video {
     display: none;
   }
@@ -81,4 +77,11 @@ body {
 
 height: 20px;
 
+}
+
+ul
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
 }

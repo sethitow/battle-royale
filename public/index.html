@@ -7,6 +7,7 @@
     <title>Login to Battle Royale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!--<script src='http://use.edgefonts.net/butcherman.js'></script>-->
@@ -31,18 +32,19 @@
             <button class="button-secondary" id="join">Join Lobby</button>
         </div>
         <div id="loginEntry">
-            <button class="button-secondary" id="loginBack">Go Back</button>
+            <div id="loginBack" class="back-button"><i class="fa fa-arrow-left"></i></div>
             <input class="intput-text-secondary" type="text" id="gName" size="20" maxlength="50" placeholder="Group Name"></input>
             <input class="intput-text-secondary"  type="password" id="gPassword" size="20" maxlength="50" placeholder="Group Password"></input>
             <button class="button-secondary" id="submit">Join</button>
         </div>
         <div id="playerEntry">
-            <button id="playerBack">Go Back</button>
+            <div id="playerBack" class="back-button"><i class="fa fa-arrow-left"></i></div>
             <input type="text" id="name" size="20" maxlength="50" placeholder="Name"></input>
             <button class="button-secondary" id="create">Add Photo</button>
             <button class="button-secondary" id="enter">Enter</button>
         </div>
         <div id="playerList">
+            <div id="playerListBack" class="back-button"><i class="fa fa-arrow-left"></i></div>
             <ul>
             </ul>
             <button class="button-secondary" id="createStart">Start</button>
