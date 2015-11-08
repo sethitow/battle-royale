@@ -222,6 +222,9 @@ $(document).ready(function () {
             }
             fb.child(groupName).child("players").child(randomOrder[randomOrder.length-1]).child("target").set(randomOrder[0]);
         });
+        
+        window.location = "play.html";
+        
     });
 
     /*$("#playerListBack").click(function () {
