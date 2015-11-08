@@ -12,16 +12,6 @@ fb.child(groupName).child("players").child(killer).child(target).set(killeeTarge
 
 }
 
-$('#Start').click(function(){
-    var player = fb.child(groupName).child("players").child(playerName);
-    //var player = "a";
-    var target = player.child("target").val();
-    var x = 'http://api.qrserver.com/v1/create-qr-code/?data=[' + player + ']&size=[150]x[150]'; //generates unique QR code based on name
-    document.getElementById("QR").src = x; //updates blank image tag in html to display unique QR code generated above
-    
-    
-});
-
 $('#picture').change(function(){
 var input = document.getElementById('picture');
 
@@ -64,9 +54,18 @@ fr.readAsBinaryString(file);
 
 
 $(document).ready(function () {
-
 	$("#killSuccessfull").fadeOut(0);
 	$("#killFailure").fadeOut(0);
+	
+	groupName = localStorage.getItem("groupName");
+	playerName = localStorage.getItem("playerName");
+	
+	//var player = fb.child(groupName).child("players").child(playerName);
+    var player = "a";
+    var target = player.child("target").val();
+    var x = 'http://api.qrserver.com/v1/create-qr-code/?data=[' + player + ']&size=[150]x[150]'; //generates unique QR code based on name
+    document.getElementById("QR").src = x; //updates blank image tag in html to display unique QR code generated above
+    
 
 })
 
