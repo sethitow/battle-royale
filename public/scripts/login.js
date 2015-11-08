@@ -23,7 +23,6 @@ function retrieveGroup() {
         groupPass = localStorage.getItem("groupPass");
         playerName = localStorage.getItem("playerName");
         action = localStorage.getItem("action");
-        alert(action);
         $("#actionEntry").fadeOut(1);
         $("#playerList").fadeIn(0);
         fb.once("value", function (snapshot) {
@@ -181,6 +180,12 @@ $(document).ready(function () {
         $("#actionEntry").delay(410).fadeIn(400);
     });
 
+    $("#quit").click(function () {
+        localStorage.setItem("groupName", "");
+        localStorage.setItem("groupPass", "");
+        localStorage.setItem("playerName", "");
+        localStorage.setItem("action", "");
+    });
 
     retrieveGroup();
 });
