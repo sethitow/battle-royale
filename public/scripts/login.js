@@ -95,5 +95,15 @@ $(document).ready(function () {
         playerName = $("#name").val();
         submitPlayer();
     });
+    
+    $("#loginBack").click(function () {
+        $("#loginEntry").fadeOut(400);
+        $("#actionEntry").delay(400).fadeIn(400);
+    });
+    
+    $("#playerBack").click(function () {
+        $("#playerEntry").fadeOut(400);
+        $("#loginEntry").delay(400).fadeIn(400);
+    });
 
 });
