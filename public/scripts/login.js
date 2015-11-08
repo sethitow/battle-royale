@@ -131,6 +131,7 @@ $(document).ready(function () {
     });
     
     $("#playerListBack").click(function () {
+        $("#playerList > ul").empty();
         $("#playerList").fadeOut(400);
         $("#actionEntry").delay(410).fadeIn(400);
     });
