@@ -145,7 +145,6 @@ function loadMessages (snapshot) {
         },
     });
     
-        
 }
 
 $(document).ready(function () {
