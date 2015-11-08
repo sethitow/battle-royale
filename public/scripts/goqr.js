@@ -1,4 +1,4 @@
-$('#').click(function getQR(){
+$('#Run').click(function getQR(){
     
     console.log("hello");
     var b = $('#Content').val();
