@@ -28,6 +28,9 @@ function submitGroup() {
                     playing: false,
                     startTime: now
                 });
+                fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
+                    loadMessages(snapshot);
+                });
                 $("#loginEntry").fadeOut(400);
                 $("#playerEntry").delay(400).fadeIn(400);
             }
@@ -38,6 +41,9 @@ function submitGroup() {
                 if (snapshot.child(groupName).child("password").val() == groupPass) {
                     $("#loginEntry").fadeOut(400);
                     $("#playerEntry").delay(400).fadeIn(400);
+                    fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
+                        loadMessages(snapshot);
+                    });
                 } else {
                     throwError("Incorrect password.");
                 }
@@ -122,10 +128,6 @@ $(document).ready(function () {
     $("#playerBack").click(function () {
         $("#playerEntry").fadeOut(400);
         $("#loginEntry").delay(400).fadeIn(400);
-    });
-    
-    fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
-        loadMessages(snapshot);
     });
 
 });
