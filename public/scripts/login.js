@@ -133,7 +133,7 @@ function submitPlayer() {
 
 function loadMessages (snapshot) {
 
-    var url = "https://whattoeatuw.com/identicon/index.php?name=" + snapshot.child("name").val();
+    var url = "http://whattoeatuw.com/identicon/index.php?name=" + snapshot.child("name").val();
     $.ajax({
         method: "GET",
         url: url,
