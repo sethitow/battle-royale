@@ -17,7 +17,7 @@ function storeGroup() {
 }
 
 function startGame() {
-
+window.location = "play.html";
 }
 
 function retrieveGroup() {
@@ -69,7 +69,7 @@ function submitGroup() {
                 fb.child(groupName).set({
                     name: groupName,
                     password: groupPass,
-                    playing: false,
+                    playing: "notPlaying",
                     startTime: now
                 });
                 storeGroup();
@@ -92,10 +92,15 @@ function submitGroup() {
                     storeGroup();
                     fb.child(groupName).child("players").on("child_added", function (snapshot, prevChildKey) {
                         loadMessages(snapshot);
-                    });
+                    	});
                     fb.child(groupName).child("players").on("child_removed", function (oldSnapshot) {
                         $("#playerList > ul > #PLAYER_" + oldSnapshot.child("name").val()).remove();
-                    });
+                    	});
+                    fb.child(groupName).on("child_modified", function(snapshot) {
+                    	if(snapshot.val() == "isPlaying") {
+                    		startGame();
+                    		}
+                    	});
                 } else {
                     throwError("Incorrect password.");
                 }
@@ -223,20 +228,11 @@ $(document).ready(function () {
             fb.child(groupName).child("players").child(randomOrder[randomOrder.length-1]).child("target").set(randomOrder[0]);
         });
         
-        window.location = "play.html";
+        fb.child(groupName).child("playing").set("isPlaying");
+        startGame();
         
     });
-
-    /*$("#playerListBack").click(function () {
-        $("#playerList > ul").empty();
-        action = "";
-        groupName = "";
-        groupPass = "";
-        playerName = "";
-        $("#playerList").fadeOut(400);
-        $("#actionEntry").delay(410).fadeIn(400);
-    });*/
-
+    
     $("#quit").click(function () {
 
         localStorage.removeItem("groupName");
@@ -260,4 +256,5 @@ $(document).ready(function () {
     });
 
     retrieveGroup();
+    
 });
