@@ -11,12 +11,17 @@ body {
 #playBox {
   position: relative;
   background-color: white;
-  width: 95%;
-  padding: 1%;
+  border-radius: 2vh;
+  width: 70vh;
+  max-width: 50vh;
+  min-height: 50vh;
+  padding: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
+  box-shadow: 0 1vh 1.2vh hsl(0, 0%, 20%);
+  transition: height 0.3s;
 }
 
 .play-button-secondary {
