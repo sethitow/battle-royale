@@ -60,7 +60,7 @@ $(document).ready(function () {
 	
 	groupName = localStorage.getItem("groupName");
 	playerName = localStorage.getItem("playerName");
-	alert(groupName+playerName);
+	//alert(groupName+playerName);
 	
 	console.log(groupName);
 	
@@ -69,7 +69,7 @@ $(document).ready(function () {
 		$("#targetName").append("Your target: " + targetName);
 	});
 	
-    var x = 'http://api.qrserver.com/v1/create-qr-code/?data=[a]&size=[150]x[150]'; //generates unique QR code based on name
+    var x = 'http://api.qrserver.com/v1/create-qr-code/?data=[playerName]&size=[150]x[150]'; //generates unique QR code based on name
     document.getElementById("QR").src = x; //updates blank image tag in html to display unique QR code generated above
     
 
